@@ -1,0 +1,15 @@
+<nb-layout class="layout">
+  <nb-layout-header fixed class="header" id="header">
+    <app-header></app-header>
+  </nb-layout-header>
+  
+
+  <nb-sidebar class="sidebar" responsive [compactedBreakpoints]="['xs', 'is', 'sm']">
+    <app-sidebar></app-sidebar>
+  </nb-sidebar>
+  
+  
+  <nb-layout-column class="colored-column-basic">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>

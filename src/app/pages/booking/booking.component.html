@@ -1,0 +1,40 @@
+<nb-layout>
+  <nb-layout-column>
+    <section class="searchById" *ngIf="d$ | async as doctor">
+      <nb-card size="small" *ngIf="doctor">
+        <nb-card-header>
+          <nb-user
+            name="{{ doctor.firstName + ' ' + doctor.lastName }}"
+            title="{{ doctor.practiceName }}"
+          ></nb-user>
+        </nb-card-header>
+        <nb-card-body>
+          <form [formGroup]="bookingForm">
+            <div class="date">
+              <input
+                nbInput
+                placeholder="Pick Date"
+                [nbDatepicker]="dateTimePicker"
+                formControlName="date"
+              />
+              <nb-date-timepicker
+                #dateTimePicker
+                singleColumn
+                [step]="30"
+                [min]="currentDate"
+              ></nb-date-timepicker>
+            </div>
+            <button
+              nbButton
+              status="info"
+              type="button"
+              (click)="createBooking()"
+            >
+              Book
+            </button>
+          </form>
+        </nb-card-body>
+      </nb-card>
+    </section>
+  </nb-layout-column>
+</nb-layout>

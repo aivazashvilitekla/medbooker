@@ -1,0 +1,15 @@
+.search{
+    .map-layout{
+        .doctors{
+            .search-container{
+                form{
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-bottom: 0.7rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+.patients-container, .doctors-container{
+    padding: 2rem 4rem;
+    .container{
+        cursor: pointer;
+        text-align: center;
+        nb-card nb-card-body{
+            padding: 4rem 0;
+        }
+    }
+    
+}
+.doctors-container{
+    nb-layout nb-layout-column .requests-section{
+        background-color: #fff;
+        h2{
+            margin: 0;
+            padding: 1rem 0.5rem;
+        }
+        .consultation-requests{
+            
+        }
+    }
+    
+}
+.inner-card-body{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+}
+@media screen and (max-width: 500px){
+    .patients-container, .doctors-container{
+        padding: 0.2rem;
+    }
+}
+.consultation-requests{
+    padding: 1rem 0;
+    .empty{
+        text-align: center;
+        margin: 0;
+    }
+}

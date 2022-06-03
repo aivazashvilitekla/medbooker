@@ -1,0 +1,94 @@
+
+<section id="patients-section">
+  <nb-layout id="patients">
+    <nb-layout-column>
+      <section>
+        <h2>Patients</h2>
+        <form *ngIf="searchForm" [formGroup]="searchForm">
+          <input
+            fullWidth
+            type="text"
+            nbInput
+            status="primary"
+            placeholder="Search Patients by firstName"
+            formControlName="firstName"
+          />
+          <input
+            fullWidth
+            type="text"
+            nbInput
+            status="primary"
+            placeholder="Search Patients by lastName"
+            formControlName="lastName"
+          />
+        </form>
+        <div class="patients">
+          <ng-container *ngFor="let patient of patients$ | async">
+            <nb-card class="card">
+              <nb-card-body class="card__body" *ngIf="patient">
+                <div class="card__body--info">
+                  <nb-user
+                    name="{{ patient.firstName | GenerateFullName: patient.lastName }}"
+                  ></nb-user>
+                  <div class="actions">
+                    <button
+                      nbButton
+                      hero
+                      status="success"
+                      (click)="createAppointment(patient)"
+                    >
+                      Create Appointment
+                    </button>
+                    
+                  </div>
+                </div>
+              </nb-card-body>
+            </nb-card>
+            
+
+          </ng-container>
+          <ng-container *ngIf="!noPatients; else empty"> </ng-container>
+        </div>
+      </section>
+    </nb-layout-column>
+    <nb-layout-column>
+      <nb-card size="small" *ngIf="selectedItem$ | async as selectedItem" class="bookingCard">
+        <nb-card-header>
+          <nb-user
+            name="{{ selectedItem.firstName + ' ' + selectedItem.lastName }}"
+            
+          ></nb-user>
+        </nb-card-header>
+        <nb-card-body>
+          <form *ngIf="bookingForm" [formGroup]="bookingForm">
+            <div class="date">
+              <input
+                nbInput
+                placeholder="Pick Date"
+                [nbDatepicker]="dateTimePicker"
+                formControlName="date"
+              />
+              <nb-date-timepicker
+                #dateTimePicker
+                singleColumn
+                [step]="30"
+                [min]="currentDate"
+              ></nb-date-timepicker>
+            </div>
+            <button
+              nbButton
+              status="info"
+              type="button"
+              (click)="createBooking(selectedItem)"
+            >
+              Book
+            </button>
+          </form>
+        </nb-card-body>
+      </nb-card>
+    </nb-layout-column>
+  </nb-layout>
+</section>
+<ng-template #empty>
+  <p class="empty">List is empty</p>
+</ng-template>

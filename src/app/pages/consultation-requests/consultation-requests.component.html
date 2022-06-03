@@ -1,0 +1,23 @@
+<section >
+  <nb-layout id="consultation-requests">
+    <nb-layout-column>
+      <section class="requests-section">
+        <h2>Consultation requests</h2>
+        <div class="consultation-requests">
+          <ng-container *ngFor="let booking of bookings$ | async">
+            <app-upcoming-consultations-card
+              [booking]="booking"
+              (onAccept)="acceptBooking(booking.id)"
+              (onReject)="rejectBooking(booking.id)"
+              [showActions]="true"
+            ></app-upcoming-consultations-card>
+          </ng-container>
+          <ng-container *ngIf="!noBookings; else empty"> </ng-container>
+        </div>
+      </section>
+    </nb-layout-column>
+  </nb-layout>
+</section>
+<ng-template #empty>
+  <p class="empty">List is empty</p>
+</ng-template>

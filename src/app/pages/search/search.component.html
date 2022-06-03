@@ -1,0 +1,35 @@
+<section class="search" id="search">
+  <nb-layout class="map-layout" >
+    <nb-layout-column id="map-column"> 
+      <app-map [setMarkers]="markersCount$ | async"></app-map>
+    </nb-layout-column>
+    <nb-layout-column class="doctors" *ngIf="doctors$ | async as doctors">
+      <div class="search-container">
+        <form *ngIf="searchForm" [formGroup]="searchForm">
+          <input
+            fullWidth
+            type="text"
+            nbInput
+            status="primary"
+            placeholder="Search Doctors by firstName"
+            formControlName="firstName"
+          />
+          <input
+            fullWidth
+            type="text"
+            nbInput
+            status="primary"
+            placeholder="Search Doctors by lastName"
+            formControlName="lastName"
+          />
+        </form>
+        <div class="doctors-container">
+          <app-search-card
+            *ngFor="let doctor of doctors"
+            [doctor]="doctor"
+          ></app-search-card>
+        </div>
+      </div>
+    </nb-layout-column>
+  </nb-layout>
+</section>

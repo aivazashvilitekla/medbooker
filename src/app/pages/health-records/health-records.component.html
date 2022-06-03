@@ -1,0 +1,53 @@
+<section class="upcoming-consultations" id="upcoming-consultations">
+  <nb-layout class="upcoming-consultations-layout">
+    <nb-layout-column class="upcoming-container">
+      <h2>Health Records</h2>
+      <div class="container">
+        <ng-container *ngFor="let booking of bookings$ | async">
+          <app-upcoming-consultations-card
+            (click)="selectBooking(booking)"
+            [booking]="booking"
+            [showActions]="false"
+          ></app-upcoming-consultations-card>
+        </ng-container>
+        <ng-container *ngIf="!noBookings; else empty"> </ng-container>
+      </div>
+    </nb-layout-column>
+    <nb-layout-column class="details">
+      <nb-card *ngIf="selectedBooking$ | async as selectedBooking">
+        <nb-card-header>
+          <div class="date">
+            <p>{{ selectedBooking.startTime | CustomDate }}</p>
+            <p>{{ selectedBooking.startTime | CustomTime }}</p>
+          </div>
+          <div class="info">
+            <h5>Upcoming Consultations</h5>
+            <h6>{{ selectedBooking.status }}</h6>
+          </div>
+        </nb-card-header>
+        <nb-card-body>
+          <div class="card-details">
+            <nb-user
+              *ngIf="role === roles.Patient"
+              name="{{
+                selectedBooking.attendees | name: attendeeType.PROVIDER
+              }}"
+              title="{{ practiceName }}"
+            ></nb-user>
+            <nb-user
+              *ngIf="role === roles.Doctor"
+              name="{{
+                selectedBooking.attendees | name: attendeeType.PATIENT
+              }}"
+            ></nb-user>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </nb-layout-column>
+  </nb-layout>
+</section>
+
+<ng-template #empty>
+  <p class="empty">List is empty</p>
+</ng-template>
+

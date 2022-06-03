@@ -1,0 +1,34 @@
+
+.details{
+    nb-card{
+        nb-card-header{
+            display: flex;
+            gap: 2rem;
+            .date{
+             border-right: 1px solid black;
+             padding-right: 0.8rem;
+             text-align: center;
+            }
+            .info{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+        nb-card-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .card-details{
+                 display: flex;
+                 justify-content: center;
+                 margin-bottom: 2rem;
+            }
+        }
+    } 
+ }
+ #upcoming-consultations .upcoming-consultations-layout .upcoming-container .container{
+     height: 80vh;
+     overflow: scroll;
+ }

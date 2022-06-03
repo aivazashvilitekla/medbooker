@@ -1,0 +1,144 @@
+<app-loading></app-loading>
+
+<nb-layout>
+  <nb-layout-column>
+    <div class="register-container">
+      <div class="screen-1">
+        <a routerLink="/homepage">Go Back</a>
+        <form
+          class="form"
+          *ngIf="registerForm"
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="names">
+            <div class="firstname form-div">
+              <div class="sec-2">
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  placeholder="Firstname"
+                  formControlName="firstName"
+                />
+              </div>
+              <span
+                class="text-danger"
+                *ngIf="(registerForm?.get('firstName')?.touched || submitted) && registerForm?.get('firstName')?.errors?.['required']"
+              >
+                Firstname is required.
+              </span>
+            </div>
+            <div class="lastname form-div">
+              <div class="sec-2">
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  placeholder="Lastname"
+                  formControlName="lastName"
+                />
+              </div>
+              <span
+                class="text-danger"
+                *ngIf="(registerForm?.get('lastName')?.touched || submitted) && registerForm?.get('lastName')?.errors?.['required']"
+              >
+                Lastname is required.
+              </span>
+            </div>
+          </div>
+          <div class="email form-div">
+            <div class="sec-2">
+              <input
+                type="email"
+                nbInput
+                fullWidth
+                placeholder="Email"
+                formControlName="email"
+              />
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="(registerForm?.get('email')?.touched || submitted) && registerForm?.get('email')?.errors?.['required']"
+            >
+              Email is required.
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="registerForm?.get('email')?.touched && registerForm?.get('email')?.errors?.['email']"
+            >
+              Enter a valid email address.
+            </span>
+          </div>
+          <div class="password form-div">
+            <div class="sec-2">
+              <input
+                [type]="passwordVisibility ? 'text' : 'password'"
+                name="password"
+                placeholder="Password"
+                formControlName="password"
+              />
+              <fa-icon [icon]="faEye" (click)="togglePassword()"></fa-icon>
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="(registerForm?.get('password')?.touched || submitted) && registerForm?.get('password')?.errors?.['required']"
+            >
+              Password is required.
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="registerForm?.get('password')?.touched && registerForm?.get('password')?.errors?.['invalidPassword']"
+            >
+              Password should have minimum 8 characters, at least 1 uppercase
+              letter, 1 lowercase letter and 1 number.
+            </span>
+          </div>
+          <div class="confirm-password form-div">
+            <div class="sec-2">
+              <input
+                [type]="confirmPasswordVisibility ? 'text' : 'password'"
+                name="password"
+                placeholder="Confirm Password"
+                formControlName="confirmPassword"
+              />
+              <fa-icon
+                [icon]="faEye"
+                (click)="toggleConfirmPassword()"
+              ></fa-icon>
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="(registerForm?.get('confirmPassword')?.touched || submitted)&& registerForm?.get('confirmPassword')?.errors?.['required']"
+            >
+              Confirm Password is required.
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="(registerForm?.get('confirmPassword')?.touched || submitted) && registerForm?.hasError('notSame')"
+            >
+              Passwords does not match.
+            </span>
+          </div>
+          <div class="role form-div">
+            <nb-radio-group [(value)]="selectedOption" ngDefaultControl formControlName="role">
+              <nb-radio value="Doctor">Doctor</nb-radio>
+              <nb-radio value="Patient">Patient</nb-radio>
+            </nb-radio-group>
+            <span
+              class="text-danger"
+              *ngIf="(submitted)&& registerForm?.get('role')?.errors?.['required']"
+            >
+              Role is required.
+            </span>
+          </div>
+          <button class="login" type="submit">Register</button>
+        </form>
+
+        <div class="footer">
+          <a routerLink="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

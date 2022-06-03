@@ -1,0 +1,39 @@
+<nb-card class="card">
+  <nb-card-body class="card__body" *ngIf="booking">
+    <div class="card__body--date">
+      <p>{{ booking.startTime | CustomDate }}</p>
+      <p>{{ booking.startTime | CustomTime }}</p>
+    </div>
+    <div class="card__body--info">
+      <nb-user
+        *ngIf="booking.practiceName"
+        name="{{ booking.attendees | name: attendeeType.PROVIDER }}"
+        title="{{ booking.practiceName }}"
+      ></nb-user>
+      <nb-user
+        *ngIf="!booking.practiceName"
+        name="{{ booking.attendees | name: attendeeType.PATIENT }}"
+      ></nb-user>
+      <div class="actions" *ngIf="showActions">
+        <button
+          fullWidth
+          nbButton
+          hero
+          status="success"
+          (click)="updateRequestStatus(booking.id, status.CONFIRMED)"
+        >
+          Accept
+        </button>
+        <button
+          fullWidth
+          nbButton
+          hero
+          status="danger"
+          (click)="updateRequestStatus(booking.id, status.DECLINED)"
+        >
+          Reject
+        </button>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,21 @@
+nb-layout{
+    nb-layout-column{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .homecard{
+            h1{
+                font-size: 50px;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+            .buttons{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    }
+}

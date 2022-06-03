@@ -1,0 +1,44 @@
+.card{
+    border: 1px solid rgb(119, 119, 119);
+    &__body{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        gap: 0.8rem;
+        &--info{
+            .actions{
+                display: flex;
+                gap: 0.5rem;
+            }
+        }
+    }
+}
+
+
+nb-card.bookingCard{
+    padding: 2rem 5rem;
+    // width: 50%;
+    // height: 30%;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    nb-card-header{
+        
+        display: flex;
+        justify-content: center;
+    }
+    nb-card-body{
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+    }
+}
+
+form{
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,71 @@
+<section class="patients-container" *ngIf="role === roles.Patient">
+  <div class="container" routerLink="/search">
+    <nb-card accent="success">
+      <nb-card-body>
+        <h2>Need to see a doctor?</h2>
+        <p>
+          Search for a healthcare professional close to you using the find a
+          provider tool
+        </p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="container" routerLink="/upcoming-consultations">
+    <nb-card accent="success">
+      <nb-card-body>
+        <h2>Upcoming consultations</h2>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="container" routerLink="/health-records">
+    <nb-card accent="success">
+      <nb-card-body>
+        <h2>Health records</h2>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</section>
+<section
+  class="doctors-container"
+  *ngIf="role === roles.Doctor"
+  id="doctors-container"
+>
+  <nb-layout class="consultation-requests">
+    <nb-layout-column>
+      <section class="requests-section">
+        <h2>Consultation requests</h2>
+        <div class="consultation-requests">
+          <ng-container *ngFor="let booking of bookings$ | async">
+            <app-upcoming-consultations-card
+              [booking]="booking"
+              (onAccept)="acceptBooking(booking.id)"
+              (onReject)="rejectBooking(booking.id)"
+              [showActions]="true"
+            ></app-upcoming-consultations-card>
+          </ng-container>
+          <ng-container *ngIf="!noBookings; else empty"> </ng-container>
+        </div>
+      </section>
+    </nb-layout-column>
+    <nb-layout-column>
+      <div class="container" routerLink="/upcoming-consultations">
+        <nb-card accent="info">
+          <nb-card-body>
+            <h2>Upcoming consultations</h2>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      <div class="container" routerLink="/patients">
+        <nb-card accent="info">
+          <nb-card-body>
+            <h2>Patients</h2>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </nb-layout-column>
+  </nb-layout>
+</section>
+
+<ng-template #empty>
+  <p class="empty">List is empty</p>
+</ng-template>

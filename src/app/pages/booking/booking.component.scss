@@ -1,0 +1,31 @@
+.searchById{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(237, 237, 237);
+    nb-card{
+        padding: 2rem 5rem;
+        // width: 50%;
+        // height: 30%;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        nb-card-header{
+            
+            display: flex;
+            justify-content: center;
+        }
+        nb-card-body{
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                align-items: center;
+            }
+        }
+    }
+}

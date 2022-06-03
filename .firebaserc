@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "medbooker-omedia": {
+      "hosting": {
+        "medbooker": [
+          "medbooker-omedia"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "medbooker-omedia"
+  }
+}

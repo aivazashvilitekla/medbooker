@@ -1,0 +1,106 @@
+// @use 'themes' as *;
+// @use '@nebular/theme/styles/globals' as *;
+
+// @include nb-install() {
+//   @include nb-theme-global();
+// };
+
+/* You can add global styles to this file, and also import other style files */
+.nb-theme-default nb-sidebar .scrollable {   padding-left: 10px;   padding-right: 10px; }
+.nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column {   padding: 0; }
+.nb-theme-default nb-radio-group{
+    display: flex;
+    justify-content: center;
+}
+.nb-theme-default nb-layout.consultation-requests .layout-container .content .columns{
+    gap: 1.3rem;
+}
+.nb-theme-default nb-layout.map-layout .layout-container .content .columns nb-layout-column#map-column{
+    flex-basis: 30%;
+}
+.nb-theme-default nb-layout.map-layout .layout-container .content .columns nb-layout-column.doctors{
+    padding: 1rem;
+}
+// upcoming consultations
+.nb-theme-default nb-layout .layout-container .content .columns{
+    padding: 1rem;
+    nb-layout-column{
+        width: 50%;
+    }
+    gap: 2rem;
+}
+//consultation-requests
+.nb-theme-default nb-layout#consultation-requests > div > div > div > div > div{
+    .requests-section{
+        width: 70%;
+    }
+}
+
+// Buttons bg
+.nb-theme-default [nbButton].appearance-filled.status-basic:focus,.nb-theme-default .appearance-filled.status-basic[nbButtonToggle]:focus{background-color:rgb(184, 184, 184);}
+.nb-theme-default [nbButton].appearance-filled.status-basic:hover,.nb-theme-default .appearance-filled.status-basic[nbButtonToggle]:hover{background-color:rgb(184, 184, 184);}
+.nb-theme-default [nbButton].appearance-filled.status-basic:active,.nb-theme-default .appearance-filled.status-basic[nbButtonToggle]:active{background-color:rgb(184, 184, 184);}
+
+.sidebar-button-section button{
+    padding: 0;
+}
+.text-danger{
+    color: red;
+    font-size: 13px;
+}
+//nb-user
+ 
+.nb-theme-default nb-user {
+    margin-bottom: 0.7rem;
+    > div > div.user-picture.initials{
+        color: white;
+        background-color: black;
+    }
+}
+@media screen and (max-width: 768px) {
+    .nb-theme-default nb-sidebar .scrollable {   padding-left: 0px;   padding-right: 0px; 
+    }
+    .nb-theme-default .appearance-filled.full-width.size-medium.shape-rectangle.status-basic.nb-transition{
+        padding: .6875rem 0.5rem;
+    }
+}
+@media screen and (max-width: 1200px) {
+    
+    #doctors-container > nb-layout > div > div > div > div > div{
+        flex-direction: column;
+        nb-layout-column{
+            width: 100%;
+        }
+    }
+    #upcoming-consultations nb-layout.upcoming-consultations-layout > div > div > div > div > div{
+        flex-direction: column-reverse;
+        nb-layout-column{
+            width: 100%;
+        }
+    }
+    #search > nb-layout.map-layout > div > div > div > div > div{
+        flex-direction: column-reverse;
+        nb-layout-column{
+            width: 100%;
+        }
+    }
+    #patients-section > nb-layout > div > div > div > div > div{
+        flex-direction: column-reverse;
+        nb-layout-column{
+            width: 100%;
+        }
+    }
+    //consultation-requests
+    .nb-theme-default nb-layout#consultation-requests > div > div > div > div > div .requests-section{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 500px) {
+    
+    #search > nb-layout.map-layout > div > div > div > div > div{
+        padding: 0;
+        nb-layout-column{
+            padding: 0;
+        }
+    }
+}

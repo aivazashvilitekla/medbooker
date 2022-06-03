@@ -1,0 +1,8 @@
+<nb-card class="search-card">
+  <nb-card-header *ngIf="doctor">
+    <nb-user name="{{ fullName }}" title="{{ doctor.practiceName }}"></nb-user>
+    <button nbButton status="info" (click)="book(doctor?.entityNo)">
+      Book
+    </button>
+  </nb-card-header>
+</nb-card>

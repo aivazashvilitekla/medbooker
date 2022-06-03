@@ -1,0 +1,63 @@
+<app-loading></app-loading>
+<nb-layout>
+  <nb-layout-column>
+    <div class="login-container">
+      <div class="screen-1">
+        <a routerLink="/homepage">Go Back</a>
+        <div class="logo">
+          <img src="../../../assets/images/shared/lg.svg" alt="" />
+        </div>
+        <form class="form" *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-div">
+            <div class="sec-2">
+              <fa-icon [icon]="faEnvelope"></fa-icon>
+              <input
+                type="email"
+                nbInput
+                fullWidth
+                placeholder="Email"
+                formControlName="email"
+              />
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="(loginForm?.get('email')?.touched || submitted) && loginForm?.get('email')?.errors?.['required']"
+            >
+              Email is required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="authError"
+            >
+              Wrong email/password combination.
+            </span>
+          </div>
+          <div class="form-div">
+            <div class="sec-2">
+              <fa-icon [icon]="faLock"></fa-icon>
+              <input
+                [type]="passwordVisibility? 'text': 'password'"
+                name="password"
+                placeholder="Password"
+                formControlName="password"
+              />
+              <fa-icon [icon]="faEye" (click)="togglePassword()"></fa-icon>
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="(loginForm?.get('password')?.touched || submitted) && loginForm?.get('password')?.errors?.['required']"
+            >
+              Password is required
+            </span>
+          </div>
+          <button class="login" type="submit">Login</button>
+        </form>
+    
+        <div class="footer">
+          <a routerLink="/register">Sign up</a>
+        </div>
+      </div>
+    </div>
+    
+  </nb-layout-column>
+</nb-layout>

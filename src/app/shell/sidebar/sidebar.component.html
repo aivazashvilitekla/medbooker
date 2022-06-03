@@ -1,0 +1,29 @@
+<section class="sidebar-button-section">
+  <button fullWidth nbButton routerLink="dashboard" routerLinkActive="active">
+    <fa-icon [icon]="faHome" class="logout-icon"></fa-icon>
+    <span class="sidebar-button">Dashboard</span>
+  </button>
+  <button fullWidth nbButton routerLink="search"  *ngIf="role===roles.Patient" routerLinkActive="active">
+    <fa-icon [icon]="faUserDoctor" class="logout-icon"></fa-icon>
+    <span class="sidebar-button">Doctors</span>
+  </button>
+  <button fullWidth nbButton routerLink="upcoming-consultations" routerLinkActive="active">
+    <fa-icon [icon]="faCalendarCheck" class="logout-icon"></fa-icon>
+    <span class="sidebar-button"
+      >Upcoming <br />
+      consultations</span
+    >
+  </button>
+  <button fullWidth nbButton routerLink="health-records" *ngIf="role===roles.Patient" routerLinkActive="active">
+    <fa-icon [icon]="faFileMedical" class="logout-icon"></fa-icon>
+    <span class="sidebar-button">Health records</span>
+  </button>
+  <button fullWidth nbButton routerLink="consultation-requests" *ngIf="role===roles.Doctor" routerLinkActive="active">
+    <fa-icon [icon]="faFileMedical" class="logout-icon"></fa-icon>
+    <span class="sidebar-button">Consultation Requests</span>
+  </button>
+  <button fullWidth nbButton routerLink="patients" *ngIf="role===roles.Doctor" routerLinkActive="active">
+    <fa-icon [icon]="faFileMedical" class="logout-icon"></fa-icon>
+    <span class="sidebar-button">Patients</span>
+  </button>
+</section>

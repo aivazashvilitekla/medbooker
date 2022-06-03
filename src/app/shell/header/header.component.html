@@ -1,0 +1,23 @@
+<div class="burger-menu">
+  
+  <a (click)="toggle()">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </a>
+</div>
+
+<header class="header">
+  <div class="logo">
+    <a routerLink=""
+      ><i class="nb-menu"></i>
+      <img src="../../../assets/images/shared/logo.svg" alt="logo medbooker" />
+      medbooker
+    </a>
+  </div>
+  <div class="profile">
+    <h4>{{username}}</h4>
+    <button nbButton outline status="primary" class="logout-btn" (click)="logOut()">
+      Log Out
+      <fa-icon [icon]="faSignOut"></fa-icon>
+    </button>
+  </div>
+</header>

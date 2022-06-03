@@ -1,0 +1,33 @@
+.card{
+    border: 1px solid rgb(119, 119, 119);
+    &__body{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        gap: 0.8rem;
+        &--date{
+            border-right: 1px solid black;
+            padding-right: 0.8rem;
+            text-align: center;
+        }
+        &--info{
+            .actions{
+                display: flex;
+                gap: 0.5rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px){
+    .card .card__body{
+        grid-template-columns: unset;
+        grid-template-rows: 1fr 1fr;
+        &--date{
+            border: none;
+            display: flex;
+            justify-content: center;
+            gap: 0.7rem;
+        }
+    }
+}
